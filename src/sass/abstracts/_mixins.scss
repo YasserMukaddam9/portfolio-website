@@ -1,0 +1,73 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+//appends a pseufo element after the element which will then clear the floats
+
+//MEDIA QUERY MANAGER
+/*
+0-600PX - Phone
+600PX-900PX - Tablet potrait
+900PX-12000PX - Tablet landscape
+1200PX-1800PX - is where our normal styles apply
+1800PX + - Big desktop
+*/
+
+/*
+@mixin respond-phone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+*/
+
+/*
+$break-point argument choices:-
+-phone
+-tab-port
+-tab-land
+-big-desktop
+
+1em=16px
+em are best solution for media queries
+
+600/16=37.5
+
+ORDER:-
+Base + typography > general layout +grid > page layout > components
+
+
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      //600px
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      //900px
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      //1200px
+      @content;
+    }
+  }
+
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) {
+      //1800px
+      @content;
+    }
+  }
+}

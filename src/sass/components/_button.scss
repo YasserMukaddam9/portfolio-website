@@ -1,0 +1,104 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block; /*inline-block it is treated as text we can set text box to center*/
+    border-radius: 10rem; /*to make button round*/
+    transition: all 0.2s; /*so it moves smoothly */
+    position: relative;
+    font-size: $default-font-size;
+
+    //change for <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /*  x direction : 0 , y-axis :20px , 3rd property is blur */
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6); /*makes element bigger   , 2-double the size*/
+      opacity: 0; /*makes it invisible after it is hovered*/
+    }
+  }
+
+  /*when we click element it is active state*/
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-0.1rem); /*this is in relation to the initial state*/
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  /*after adds a virtual element right after the element we are selecting*/
+  &::after {
+    content: ""; /*necessary property for it to appear*/
+    display: inline; /*this should also be there*/
+    height: 100%;
+    width: 100%; /*these 2 are 100% of the btn*/
+    border-radius: 10rem;
+    /*we want to put it behind our button, we will use absolute positioning*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /*defines position of elemnents if they are on top of one another*/
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s; /*.75 is delay*/
+    animation-fill-mode: backwards; /*makes button invisible at first*/
+  }
+}
+
+/*Pseudo classes are a special state of a selector/element*/
+
+/*visited - after it is clicked once */
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+    transform: translateY(0);
+  }
+}

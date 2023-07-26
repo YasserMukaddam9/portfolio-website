@@ -1,0 +1,46 @@
+@keyframes moveInLeft {
+  /*before animation starts*/
+  0% {
+    opacity: 0; /*we want it to be invisible*/
+    transform: translateX(
+      -10rem
+    ); /*animate in X direction  , +ve value goes from left to right , -ve value goes from right to left */
+  }
+
+  80% {
+    transform: translateX(1rem);
+    /*it bounces*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+    /*we want it to look same as to what it is looking now */
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

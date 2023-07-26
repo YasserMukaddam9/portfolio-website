@@ -1,0 +1,45 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /*to change box model so that padding and margin are no longer added to the total height and width. 10/16*/
+}
+
+html {
+  font-size: 62.5%; //1rem=10px 10/16 = 0.625
+
+  @include respond(tab-land) {
+    //width < 1200
+    font-size: 56.25%; //1rem=9px , 9/16 = 0.5625
+  }
+
+  @include respond(tab-port) {
+    //width <900
+    font-size: 50%; //1rem=8px , 8/16 = 0.5
+  }
+  /*
+  @include respond(phone) {
+    font-size: 30%; //1rem=4.8px , 4.8/16
+  }
+*/
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem=12px , 12/16 = 0.75
+  }
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: $color-grey;
+  padding: 3rem;
+  box-sizing: border-box;
+
+  @include respond(tab-port) {
+    //width <900
+    padding: 0; //1rem=8px , 8/16 = 0.5
+  }
+}

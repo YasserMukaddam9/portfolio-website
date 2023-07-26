@@ -1,0 +1,43 @@
+.header {
+  height: 95vh; /*we say at every point height of box of the element should be 95% of the viewport height*/
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(./img/hero.jpg); /*to go in project folder .. then img then name of img*/ /*0.8 is making it transparent*/
+  background-size: cover; /*what cover does is that whatever is width of viewport element will always fit inside the box*/
+  background-position: top; /*when we are minimizing the page top of the image will always remain same*/
+
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /*good tool for shapes :- https://bennettfeely.com/clippy/*/
+
+  position: relative;
+
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem; /*width will autmaticlly figured out by brwser,we can do it viceversa mention width & height is figured automatically*/
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%; /* these in relation to parent element */
+    left: 50%;
+    transform: translate(
+      -50%,
+      -50%
+    ); /*we specify how much we want to translate on x and y  and the % we mention are not in relation in relation to parent element but of the element itself , if we say 50% it will be shifted hald of the width to the left side and same for the height. because of wedge ie the cut it is looking weird therefore we will put 40% at */
+    text-align: center;
+  }
+}
